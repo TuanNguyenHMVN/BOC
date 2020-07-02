@@ -1,0 +1,10 @@
+<div class="row list-post">
+  <div class="col-12">
+    <button *ngIf="!isAddPost" type="button" class="btn btn-primary add-post-btn" (click)="onAddPost()">Add</button>
+    <button *ngIf="isAddPost" type="button" class="btn btn-primary add-post-btn" (click)="onSavePost()">Save</button>
+    <input *ngIf="isAddPost" type="text" [(ngModel)]="postContent" class="form-control col-6 add-post-btn"/>
+  </div>
+  <div class="col-md-4" *ngFor="let post of postList">
+    <app-card [post]="post" (deletePost)="onDeletePost($event)"></app-card>
+  </div>
+</div>

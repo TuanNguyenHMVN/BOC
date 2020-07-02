@@ -1,0 +1,8 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{post.id}}</h5>
+    <p class="card-text">{{post.body}}</p>
+    <a href="post/{{post.id}}" class="card-link">View Detail</a>
+    <a href="javascript:void(0)" class="card-link" (click)="onDeletePost()">Delete</a>
+  </div>
+</div>

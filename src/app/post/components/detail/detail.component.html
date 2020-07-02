@@ -1,0 +1,29 @@
+<div class="post-content-wrapper" *ngIf="postContent">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <div>
+        <h5 class="card-title">{{postContent.id}}</h5>
+        <p *ngIf="!isEditPost" class="card-text">{{postContent.body}}</p>
+        <input *ngIf="isEditPost" type="text" class="form-control" [(ngModel)]="postContent.body">
+      </div>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let comment of postContent.comments"
+          class="list-group-item">{{ comment.body }}</li>
+    </ul>
+    <div class="card-body">
+      <div *ngIf="!isAddComment && !isEditPost">
+        <a href="javascript:void(0)" (click)="onEditPost()" class="card-link">Edit</a>
+        <a href="javascript:void(0)" (click)="onWriteComment()" class="card-link">Add Comment</a>
+        <a href="/post" class="card-link">Back</a>
+      </div>
+      <div *ngIf="isAddComment">
+        <label for="addcomment">Comment:</label>
+          <input type="text" class="form-control" [(ngModel)]="newComment.body">
+      </div>
+      <p *ngIf="isAddComment || isEditPost">
+        <button type="button" class="btn btn-primary save-comment-btn" (click)="onSave()">Save</button>
+      </p>
+    </div>
+  </div>
+</div>
